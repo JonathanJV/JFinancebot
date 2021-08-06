@@ -181,8 +181,6 @@ fiis.groupby('Setor').agg(['median', 'mean'])['DY (12M)Acumulado']
 # In[18]:
 
 
-pip install yfinance
-
 
 # In[19]:
 
@@ -205,9 +203,6 @@ ticker.history().head()
 
 
 # In[22]:
-
-
-pip install investPy
 
 
 # In[23]:
