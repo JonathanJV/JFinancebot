@@ -5,11 +5,19 @@
 
 
 from selenium import webdriver
+from webdriver_manager.chrome import ChromeDriverManager
 from time import sleep
 from os import path
 import os
 import pandas as pd
 from tqdm.notebook import tqdm
+
+chrome_options = webdriver.ChromeOptions()
+chrome_options.add_argument('--headless')
+chrome_options.add_argument('--no-sandbox')
+chrome_options.add_argument('--disable-dev-shm-usage')
+chrome_options.add_experimental_option('excludeSwitches', ['enable-logging'])
+chrome_options.add_argument('--log-level=3')
 
 
 # In[3]:
@@ -24,7 +32,8 @@ def coletar_dados_fundamentalista_status_invest():
         os.remove(output)
         
     print('...Fazendo aquisição')
-    driver = webdriver.Chrome(executable_path='/Users/jonathan_vieira/chromedriver')
+    driver = webdriver.Chrome(ChromeDriverManager().install(), options=chrome_options)
+    #driver = webdriver.Chrome(executable_path='/Users/jonathan_vieira/chromedriver')
     driver.get(URL)
     sleep(1)
     
